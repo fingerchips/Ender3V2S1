@@ -28,13 +28,13 @@
 /**
  * Marlin release version identifier
  */
-#define SHORT_BUILD_VERSION "2.1.3.3 MRiscoC"
+#define SHORT_BUILD_VERSION "2.1.3.4_MRiscoC"
 
 /**
  * Verbose version identifier which should contain a reference to the location
  * from where the binary was downloaded or the source code was compiled.
  */
-#define DETAILED_BUILD_VERSION " Ender3S1-SKRME3V3-UBL-LA, based on bugfix-2.1.x"
+#define DETAILED_BUILD_VERSION " Ender3V2-SKRME3V2-MBL-LA, based on bugfix-2.1.x"
 
 /**
  * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
