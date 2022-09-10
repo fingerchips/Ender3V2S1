@@ -138,6 +138,7 @@ Debug/
 __vm/
 .vs/
 vc-fileutils.settings
+configurations/*
 
 # Visual Studio Code
 .vscode/*
