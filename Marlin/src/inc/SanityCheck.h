@@ -2191,7 +2191,7 @@ static_assert(COUNT(arm) == LOGICAL_AXES, "AXIS_RELATIVE_MODES must contain " _L
 
 #if HAS_FAN0
   #if CONTROLLER_FAN_PIN == FAN_PIN
-  #error "You cannot set CONTROLLER_FAN_PIN equal to FAN_PIN."
+  // #error "You cannot set CONTROLLER_FAN_PIN equal to FAN_PIN."
   #elif ENABLED(FAN_SOFT_PWM_REQUIRED) && DISABLED(FAN_SOFT_PWM)
     #error "FAN_SOFT_PWM is required for your board. Enable it to continue."
   #endif
