@@ -138,7 +138,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Barboza's-CE3V2-SKRmE3V2"
+#define CUSTOM_MACHINE_NAME "Barboza's-CE3V2-SKRmE3V2Crt"
 #define NO_CONTROLLER_CUSTOM_WIRING_WARNING
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -680,35 +680,42 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-#define DEFAULT_Kp_LIST \
-  {                     \
-    28.72, 28.72        \
-  }
-#define DEFAULT_Ki_LIST \
-  {                     \
-    2.62, 2.62          \
-  }
-#define DEFAULT_Kd_LIST \
-  {                     \
-    78.81, 78.81        \
-  }
+    #define DEFAULT_Kp_LIST \
+    {                     \
+      28.72, 28.72        \
+    }
+    #define DEFAULT_Ki_LIST \
+    {                     \
+      2.62, 2.62          \
+    }
+    #define DEFAULT_Kd_LIST \
+    {                     \
+      78.81, 78.81        \
+    }
   #else
-// Ender 3 v2
-#define DEFAULT_Kp 26.98
-#define DEFAULT_Ki 2.25
-#define DEFAULT_Kd 80.95
+    // Ender 3 v2 values with 195 C and part cooling fan at 100% for 5 cycles obtained on 15--Sep--2022:
+
+    #define DEFAULT_Kp 25.05
+    #define DEFAULT_Ki 2.07
+    #define DEFAULT_Kd 75.66
+    /*
+    Values obtained with 5 cycles at 195 C on the printer before 15-Sep-2022:
+    #define DEFAULT_Kp 26.29
+    #define DEFAULT_Ki 2.24
+    #define DEFAULT_Kd 77.28
+    */
   #endif
 #endif
 
-/**
- * Model Predictive Control for hotend
- *
- * Use a physical model of the hotend to control temperature. When configured correctly
- * this gives better responsiveness and stability than PID and it also removes the need
- * for PID_EXTRUSION_SCALING and PID_FAN_SCALING. Use M306 T to autotune the model.
- * @section mpctemp
- */
-#if ENABLED(MPCTEMP)
+  /**
+   * Model Predictive Control for hotend
+   *
+   * Use a physical model of the hotend to control temperature. When configured correctly
+   * this gives better responsiveness and stability than PID and it also removes the need
+   * for PID_EXTRUSION_SCALING and PID_FAN_SCALING. Use M306 T to autotune the model.
+   * @section mpctemp
+   */
+  #if ENABLED(MPCTEMP)
   //#define MPC_EDIT_MENU                             // Add MPC editing to the "Advanced Settings" menu. (~1300 bytes of flash)
   //#define MPC_AUTOTUNE_MENU                         // Add MPC auto-tuning to the "Advanced Settings" menu. (~350 bytes of flash)
 
@@ -762,11 +769,11 @@
     X_CENTER, Y_CENTER, 1.0f \
   }                            // (mm) M306 Autotuning position, ideally bed center at first layer height.
 #define MPC_TUNING_END_Z 10.0f // (mm) M306 Autotuning final Z position.
-#endif
+  #endif
 
-//===========================================================================
-//====================== PID > Bed Temperature Control ======================
-//===========================================================================
+  //===========================================================================
+  //====================== PID > Bed Temperature Control ======================
+  //===========================================================================
 
 /**
  * PID Bed Heating
@@ -1336,10 +1343,10 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+// #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING  // Manual mesh not have a probe
+#define USE_PROBE_FOR_Z_HOMING  // Manual mesh not have a probe
 
 /**
  * Z_MIN_PROBE_PIN
@@ -1370,7 +1377,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-#define PROBE_MANUALLY  // Manual mesh version
+// #define PROBE_MANUALLY  // Manual mesh version
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -1393,7 +1400,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * MagLev V4 probe by MDD
@@ -1545,7 +1552,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }  // MRiscoC BLTouch offset for support: https://www.thingiverse.com/thing:4605354 (z-offset = -1.80 mm)  // Manual mesh use the nozzle as probe
+#define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 }  // MRiscoC BLTouch offset for support: https://www.thingiverse.com/thing:4605354 (z-offset = -1.80 mm)  // Manual mesh use the nozzle as probe
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1765,7 +1772,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 245
+#define Z_MAX_POS 239.5
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1935,9 +1942,9 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING  // Manual Mesh
+// #define MESH_BED_LEVELING  // Manual Mesh
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -1945,7 +1952,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  * leveling immediately after G28.
  */
 //#define RESTORE_LEVELING_AFTER_G28
-//#define ENABLE_LEVELING_AFTER_G28
+#define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -2148,7 +2155,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
@@ -2615,7 +2622,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-//#define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
