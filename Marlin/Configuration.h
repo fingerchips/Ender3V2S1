@@ -138,7 +138,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Barboza's-CE3V2-SKRmE3V2Crt"
+#define CUSTOM_MACHINE_NAME "CE3V2-SKRmE3V2CrtAblLA"
 #define NO_CONTROLLER_CUSTOM_WIRING_WARNING
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -1552,7 +1552,7 @@ Values obtained with 5 cycles at 60 C on the printer 10-Sep-2022:
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -44, -7, 0 }  // MRiscoC BLTouch offset for support: https://www.thingiverse.com/thing:4605354 (z-offset = -1.80 mm)  // Manual mesh use the nozzle as probe
+#define NOZZLE_TO_PROBE_OFFSET { -45, -9, 0 }  // MRiscoC BLTouch offset for support: https://www.thingiverse.com/thing:4605354 (z-offset = -1.80 mm)  // Manual mesh use the nozzle as probe
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
